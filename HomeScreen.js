@@ -1,31 +1,28 @@
 import React from 'react';
-import { ScrollView, Text, View, Button, StyleSheet } from 'react-native';
+import { ScrollView, Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native'; // Add TouchableOpacity
 import { useRecipes } from './RecipeContext';  // Ensure path is correct
 
 function HomeScreen({ navigation }) {
   const { recipes, deleteRecipe } = useRecipes();
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.header}>Recipe List</Text>
-      {recipes.map((recipe, index) => (
-        <View key={index} style={styles.recipeCard}>
-          <View style={styles.recipeContent}>
-            <Text style={styles.recipeName}>{recipe.name}</Text>
-            <Text style={styles.recipeDetail}>{recipe.details}</Text>
-            {recipe.ingredients.map((ingredient, idx) => (
-              <View key={idx} style={styles.ingredientRow}>
-                <Text>{ingredient.name}: {ingredient.measurement} {ingredient.unit}</Text>
+      <ScrollView style={styles.container}>
+          <Text style={styles.header}>Recipe List</Text>
+          {recipes.map((recipe, index) => (
+              <View key={index} style={styles.recipeCard}>
+                  <TouchableOpacity
+                      onPress={() => navigation.navigate('RecipeDetail', { recipe })}
+                      style={styles.recipeContent}
+                  >
+                      <Text style={styles.recipeName}>{recipe.name}</Text>
+                      <Text style={styles.recipeDetail}>{recipe.details}</Text>
+                  </TouchableOpacity>
+                  <Button title="Delete" color="red" onPress={() => deleteRecipe(index)} style={styles.deleteButton} />
               </View>
-            ))}
-          </View>
-          <Button title="Delete" color="red" onPress={() => deleteRecipe(index)} style={styles.deleteButton} />
-        </View>
-      ))}
-    </ScrollView>
+          ))}
+      </ScrollView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

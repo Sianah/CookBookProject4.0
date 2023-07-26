@@ -4,6 +4,7 @@ import { Button } from 'react-native';
 import HomeScreen from './HomeScreen';
 import AddRecipeScreen from './AddRecipeScreen';
 import CalendarScreen from './CalendarScreen';
+import RecipeDetailScreen from './RecipeDetailScreen';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ const AppNavigator = () => {
       />
       <Stack.Screen name="AddRecipe" component={AddRecipeScreen} />
       <Stack.Screen name="Calendar" component={CalendarScreen} />
+      <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} options={{ title: 'Recipe Details' }} />
     </Stack.Navigator>
   );
 };
