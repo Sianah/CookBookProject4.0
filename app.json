@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "CookBookProject4.0",
-    "slug": "CookBookProject4.0",
+    "slug": "cookbook2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.itsasma11world.cookbook2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "45cc84a4-397c-4373-9d12-f8c5a67dbe96"
+      }
+    },
+    "owner": "itsasma11world"
   }
 }
