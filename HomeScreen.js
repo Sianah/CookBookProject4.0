@@ -15,7 +15,7 @@ function HomeScreen({ navigation }) {
                       style={styles.recipeContent}
                   >
                       <Text style={styles.recipeName}>{recipe.name}</Text>
-                      <Text style={styles.recipeDetail}>{recipe.details}</Text>
+                
                   </TouchableOpacity>
                   <Button title="Delete" color="red" onPress={() => deleteRecipe(index)} style={styles.deleteButton} />
               </View>
