@@ -28,18 +28,16 @@ export default function CalendarScreen({ navigation }) {
     }
     setMarkedDates(newMarkedDates);
   };
-
   return (
     <View style={styles.container}>
-      <Calendar
+       <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
       />
-    
+
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

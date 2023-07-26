@@ -4,12 +4,11 @@ import { RecipeProvider } from './RecipeContext';
 import AppNavigator from './AppNavigator';
 
 export default function App() {
-  return (
-    <RecipeProvider>
-      <NavigationContainer>
-        <AppNavigator />
-      </NavigationContainer>
-    </RecipeProvider>
-  );
+  return ( <RecipeProvider>
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
+  </RecipeProvider>
+);
 }
 
