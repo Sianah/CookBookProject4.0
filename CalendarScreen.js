@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -12,7 +12,6 @@ LocaleConfig.locales['en'] = {
 
 LocaleConfig.defaultLocale = 'en';
 
-LocaleConfig.defaultLocale = 'en';
 
 export default function CalendarScreen({ navigation }) {
   const [markedDates, setMarkedDates] = useState({});
@@ -56,7 +55,12 @@ export default function CalendarScreen({ navigation }) {
         onDayPress={onDayPress}
         markedDates={markedDates}
       />
+      <View style={styles.guidanceBox}>
+      <Text style={styles.guidanceText}>
+        Tap On the Days that You Will Be Preparing Your Meals
+      </Text>
     </View>
+  </View>
   );
 }
 const styles = StyleSheet.create({
@@ -65,5 +69,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#eaeaea',
     padding: 10,
   },
+  guidanceBox: {
+    marginTop: 20,
+    backgroundColor: '#f2f2f2',  // Light gray background for the box
+    padding: 10,                  // Padding inside the box
+    borderRadius: 8,              // Rounded corners for the box
+    shadowColor: "#000",          // Below are shadow settings for a raised effect
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
+},
+guidanceText: {
+    textAlign: 'center',
+    color: '#000',          // Changing color to black for better contrast
+    fontSize: 18,           // Increasing the font size
+    fontWeight: 'bold',     // Making the text bold
+    fontStyle: 'italic',    // Adding an italic style
+},
+
+
 });
+
+
+
+
 
