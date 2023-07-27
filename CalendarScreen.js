@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ImageBackground } from 'react-native';
 
 LocaleConfig.locales['en'] = {
   monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -50,6 +51,7 @@ export default function CalendarScreen({ navigation }) {
   };
 
   return (
+    <ImageBackground source={require('./ingredients.jpg')} style={styles.container}>
     <View style={styles.container}>
       <Calendar
         onDayPress={onDayPress}
@@ -61,13 +63,15 @@ export default function CalendarScreen({ navigation }) {
       </Text>
     </View>
   </View>
+  </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#eaeaea',
+    
     padding: 10,
+    
   },
   guidanceBox: {
     marginTop: 20,
