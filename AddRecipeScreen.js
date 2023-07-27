@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView } from 'react-native';
 import { useRecipes } from './RecipeContext';  // Ensure the path is correct if you've moved files
+import { ImageBackground } from 'react-native';
+
 
 export default function AddRecipeScreen({ navigation }) {
   const { addRecipe } = useRecipes();
@@ -29,7 +31,9 @@ export default function AddRecipeScreen({ navigation }) {
   };
 
   return (
+    <ImageBackground source={require('./whisking.jpg')} style={styles.backgroundImage}>
     <ScrollView style={styles.container}>
+    <View style={styles.contentContainer}> 
       <Text style={styles.label}>Recipe Name:</Text>
       <TextInput 
         value={name}
@@ -72,14 +76,26 @@ export default function AddRecipeScreen({ navigation }) {
       <Button title="Add another ingredient" onPress={handleAddIngredient} />
 
       <Button title="Submit" onPress={handleSubmit} />
+      </View>
     </ScrollView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 15,
+  backgroundImage: {  // New style for the ImageBackground
+    flex: 1,
+    resizeMode: "cover",
+  },
+  scrollContainer: { 
+    flex: 1,
+  },
+  contentContainer: {
+    padding: 15,   // Reduced from 20
+    margin: 20,   // Added margin to move the container inward from screen edges
+    maxHeight: '95%',  // This will limit the container height to 85% of the screen height. Adjust as needed.
     backgroundColor: '#eaeaea',
+    borderRadius: 10, //rounds out border
   },
   label: {
     fontSize: 18,

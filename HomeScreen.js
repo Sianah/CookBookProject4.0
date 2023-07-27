@@ -1,11 +1,15 @@
 import React from 'react';
 import { ScrollView, Text, View, Button, StyleSheet, TouchableOpacity } from 'react-native'; // Add TouchableOpacity
 import { useRecipes } from './RecipeContext';  // Ensure path is correct
+import { ImageBackground } from 'react-native';
+
 
 function HomeScreen({ navigation }) {
   const { recipes, deleteRecipe } = useRecipes();
 
   return (
+    <ImageBackground source={require('./spices.jpg')} style={styles.container}>
+    {/* Rest of the code */}
       <ScrollView style={styles.container}>
           <Text style={styles.header}>Recipe List</Text>
           {recipes.map((recipe, index) => (
@@ -21,13 +25,14 @@ function HomeScreen({ navigation }) {
               </View>
           ))}
       </ScrollView>
+      </ImageBackground>
   );
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 15,
-    backgroundColor: '#eaeaea',
+    
   },
   header: {
     fontSize: 24,
