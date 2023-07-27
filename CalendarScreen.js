@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 LocaleConfig.locales['en'] = {
   monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -11,8 +12,26 @@ LocaleConfig.locales['en'] = {
 
 LocaleConfig.defaultLocale = 'en';
 
+LocaleConfig.defaultLocale = 'en';
+
 export default function CalendarScreen({ navigation }) {
   const [markedDates, setMarkedDates] = useState({});
+
+  useEffect(() => {
+    // Load marked dates when the component mounts
+    const loadMarkedDates = async () => {
+      try {
+        const savedMarkedDates = await AsyncStorage.getItem('markedDates');
+        if (savedMarkedDates) {
+          setMarkedDates(JSON.parse(savedMarkedDates));
+        }
+      } catch (error) {
+        console.error("Failed to load the marked dates.", error);
+      }
+    };
+
+    loadMarkedDates();
+  }, []);
 
   const onDayPress = (day) => {
     let newMarkedDates = { ...markedDates };
@@ -27,14 +46,16 @@ export default function CalendarScreen({ navigation }) {
       };
     }
     setMarkedDates(newMarkedDates);
+    // Save the updated marked dates to AsyncStorage
+    AsyncStorage.setItem('markedDates', JSON.stringify(newMarkedDates));
   };
+
   return (
     <View style={styles.container}>
-       <Calendar
+      <Calendar
         onDayPress={onDayPress}
         markedDates={markedDates}
       />
-
     </View>
   );
 }
