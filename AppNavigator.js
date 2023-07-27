@@ -30,7 +30,9 @@ const AppNavigator = () => {
           )
         })}
       />
-      <Stack.Screen name="AddRecipe" component={AddRecipeScreen} />
+      <Stack.Screen name="AddRecipe" component={AddRecipeScreen}options={{
+          title: 'Recipe'  // <-- This is the change
+        }} />
       <Stack.Screen name="Calendar" component={CalendarScreen} />
       <Stack.Screen name="RecipeDetail" component={RecipeDetailScreen} options={{ title: 'Recipe Details' }} />
     </Stack.Navigator>
