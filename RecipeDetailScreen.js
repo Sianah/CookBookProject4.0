@@ -1,13 +1,16 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet } from 'react-native';
+import { ImageBackground } from 'react-native';
 
 function RecipeDetailScreen({ route }) {
     const { recipe } = route.params;
 
     return (
+        <ImageBackground source={require('./cooking.jpg')} style={styles.backgroundImage}>
         <ScrollView style={styles.container}>
+        <View style={styles.contentContainer}> 
             <Text style={styles.header}>{recipe.name}</Text>
-            <Text style={styles.details}>Description: {recipe.details}</Text>
+            
 
             <Text style={styles.ingredientsLabel}>Ingredients:</Text>
             
@@ -15,17 +18,32 @@ function RecipeDetailScreen({ route }) {
                 <View key={idx} style={styles.ingredientBox}>
                     <Text style={styles.ingredientText}>{ingredient.name}: {ingredient.measurement} {ingredient.unit}</Text>
                 </View>
-            ))}
+           
+           ))}
+           <Text style={styles.details}>Description: </Text>
+           <Text style={styles.details}>{recipe.details}</Text>
+
+             </View>
         </ScrollView>
+        </ImageBackground>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    backgroundImage: {  // New style for the ImageBackground
         flex: 1,
-        padding: 15,
+        resizeMode: "cover",
+      },
+      scrollContainer: { 
+        flex: 1,
+      },
+      contentContainer: {
+        padding: 15,   // Reduced from 20
+        margin: 20,   // Added margin to move the container inward from screen edges
+        maxHeight: '100%',  // This will limit the container height to 85% of the screen height. Adjust as needed.
         backgroundColor: '#eaeaea',
-    },
+        borderRadius: 10, //rounds out border
+      },
     header: {
         fontSize: 24,
         fontWeight: 'bold',

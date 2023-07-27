@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     padding: 15,   // Reduced from 20
     margin: 20,   // Added margin to move the container inward from screen edges
     maxHeight: '95%',  // This will limit the container height to 85% of the screen height. Adjust as needed.
-    backgroundColor: '#eaeaea',
+    backgroundColor: '#ffffff',
     borderRadius: 10, //rounds out border
   },
   label: {
