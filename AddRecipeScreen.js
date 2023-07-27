@@ -58,7 +58,7 @@ export default function AddRecipeScreen({ navigation }) {
             value={ingredient.measurement}
             onChangeText={(value) => handleIngredientChange(idx, 'measurement', value)}
             style={styles.ingredientInput}
-            placeholder="Measurement"
+            placeholder="Amount"
             keyboardType="numeric"
           />
           <TextInput 
